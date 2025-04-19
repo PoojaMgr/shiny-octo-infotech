@@ -1,7 +1,7 @@
 #list {
     border: 2px solid black;
-    /* width: 100vh; */
     height: 80vh;
+    width: 100%;
 }
 
 #list thead {

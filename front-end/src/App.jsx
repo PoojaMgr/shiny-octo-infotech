@@ -1,6 +1,7 @@
 import "./style.css";
-import UserList from "./components/UserList";
 import { useMsal } from "@azure/msal-react";
+import UserList from "./components/UserList";
+import Header from "./components/Header";
 
 export default function App() {
   const { instance, accounts } = useMsal();
@@ -16,9 +17,8 @@ export default function App() {
     <div className="App">
       {accounts.length > 0 ? (
         <>
-          <h2>Hi {accounts[0].username}</h2>
+          <Header handleLogout={handleLogout} accounts={accounts} />
           <UserList />
-          <button onClick={handleLogout}>Logout</button>
         </>
       ) : (
         <button onClick={handleLogin}>Login with Azure AD</button>
