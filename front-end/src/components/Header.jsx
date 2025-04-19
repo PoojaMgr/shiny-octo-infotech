@@ -1,9 +1,14 @@
+import { useContext } from "react";
 import "./Header.css";
 import Logout from "../image/logout.svg";
-export default function Header({ handleLogout, accounts }) {
+import { AuthContext } from "../App";
+
+export default function Header({ handleLogout }) {
+  const auth = useContext(AuthContext);
+  console.log(auth, "auth");
   return (
-    <div className="Header">
-      <h2>Hi {accounts[0].name}</h2>
+    <div className="Header theme">
+      <h2>Hi {auth?.accounts?.[0].name}</h2>
       <button onClick={handleLogout}>
         <img src={Logout} alt="Logout" />
       </button>
