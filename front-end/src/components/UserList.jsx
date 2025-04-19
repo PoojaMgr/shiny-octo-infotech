@@ -67,7 +67,7 @@ const UserList = () => {
             {currentItems.map((user) => (
               <tr key={user.id}>
                 <td>
-                  {user.firstName}
+                  {user.firstName} {" "}
                   {user.lastName}
                 </td>
                 <td>{user.company.name}</td>
