@@ -1,4 +1,5 @@
 const { app } = require("@azure/functions");
+const UsersList = require("./const/Users.json");
 
 app.http("GetUsers", {
   methods: ["GET"],
@@ -6,14 +7,12 @@ app.http("GetUsers", {
   handler: async (request, context) => {
     context.log(`GET /GetUsers`);
 
-    const users = [
-      { name: "Pooja", email: "pooja@example.com" },
-      { name: "Thapa", email: "thapa@example.com" },
-    ];
-
     return {
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(users),
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+      },
+      body: JSON.stringify(UsersList),
     };
   },
 });

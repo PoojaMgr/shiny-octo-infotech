@@ -1,0 +1,14 @@
+#list {
+    border: 2px solid black;
+    /* width: 100vh; */
+    height: 80vh;
+}
+
+#list thead {
+    background-color: #0b81ef77;
+    height: 50px;
+}
+
+#list tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
