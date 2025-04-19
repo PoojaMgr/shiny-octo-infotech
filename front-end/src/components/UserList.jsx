@@ -5,20 +5,23 @@ const UserList = () => {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
 
+  const fetchAPI = async () => {
+    try {
+      const data = await fetch(
+        "https://pooja-azure-functions-api.azurewebsites.net/api/GetUsers"
+      );
+      const result = await data.json();
+      if (!result) throw new Error("Failed to fetch users");
+      setUsers(result);
+      setLoading(false);
+    } catch (err) {
+      setError(err.message);
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {
-    fetch("http://localhost:7071/api/GetUsers") // Replace with deployed URL later
-      .then((res) => {
-        if (!res.ok) throw new Error("Failed to fetch users");
-        return res.json();
-      })
-      .then((data) => {
-        setUsers(data);
-        setLoading(false);
-      })
-      .catch((err) => {
-        setError(err.message);
-        setLoading(false);
-      });
+    fetchAPI();
   }, []);
 
   if (loading) return <p>Loading users...</p>;
