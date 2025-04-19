@@ -1,8 +1,9 @@
-import { createContext } from "react";
+import { createContext, lazy, Suspense } from "react";
 import "./style.css";
 import { useMsal } from "@azure/msal-react";
-import UserList from "./components/UserList";
-import Header from "./components/Header";
+import loaderImg from "./image/loader.svg";
+const Header = lazy(() => import("./components/Header"));
+const UserList = lazy(() => import("./components/UserList"));
 
 export const AuthContext = createContext();
 export default function App() {
@@ -19,14 +20,18 @@ export default function App() {
   return (
     <AuthContext.Provider value={accounts}>
       <div className="App">
-        {accounts.length > 0 ? (
-          <>
-            <Header handleLogout={handleLogout} />
-            <UserList />
-          </>
-        ) : (
-          <button onClick={handleLogin}>Login with Azure AD</button>
-        )}
+        <Suspense fallback={loaderImg}>
+          {accounts.length > 0 ? (
+            <>
+              <Header handleLogout={handleLogout} />
+              <UserList />
+            </>
+          ) : (
+            <div>
+              <button onClick={handleLogin}>Login with Azure AD</button>
+            </div>
+          )}
+        </Suspense>
       </div>
     </AuthContext.Provider>
   );

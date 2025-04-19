@@ -8,7 +8,7 @@ export default function Header({ handleLogout }) {
   console.log(auth, "auth");
   return (
     <div className="Header theme">
-      <h2>Hi {auth?.accounts?.[0].name}</h2>
+      <h2>Hello {auth?.[0].name}</h2>
       <button onClick={handleLogout}>
         <img src={Logout} alt="Logout" />
       </button>
