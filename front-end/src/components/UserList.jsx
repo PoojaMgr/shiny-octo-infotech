@@ -42,7 +42,6 @@ const UserList = () => {
     setPage(page + 1);
   };
 
-  if (loading) return <p>Loading users...</p>;
   if (error) return <p style={{ color: "red" }}>Error: {error}</p>;
   let currentItems = users;
   if (users.length > 5) {
@@ -80,7 +79,9 @@ const UserList = () => {
         ) : (
           <img src={loaderImg} alt="loader" />
         )}
-        {currentItems.length === 0 && <p>No users to show</p>}
+        {currentItems.length === 0 && (
+          <p style={{ textAlign: "center" }}>No users to show</p>
+        )}
       </table>{" "}
       <br />
       <footer>
