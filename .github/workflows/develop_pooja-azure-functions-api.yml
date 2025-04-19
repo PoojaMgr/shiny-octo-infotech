@@ -69,5 +69,5 @@ jobs:
         with:
           app-name: 'pooja-azure-functions-api'
           slot-name: 'Production'
-          package: ${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}
+          package: './azure-functions-api'
           
