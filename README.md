@@ -1,5 +1,6 @@
 # React + Azure Functions Project Documentation
-
+## Architecture
+![alt text](https://raw.githubusercontent.com/PoojaMgr/shiny-octo-infotech/refs/heads/develop/Architecture.jpg)
 ## Project Overview
 
 This project is a full-stack web application built using:
